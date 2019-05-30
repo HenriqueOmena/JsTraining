@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Using Fetch and Wait</title>
+</head>
+<body>
+
+<script>
+        const url_fabricantes = 'https://parallelum.com.br/fipe/api/v1/carros/marcas';
+        var getCarros = async () => {
+            const response = await fetch(url_fabricantes);
+            const data = await response.json();
+
+            var {nome, codigo} = data;
+            console.log(codigo);
+            console.log(nome);
+        }
+
+        getCarros();
+
+</script>
+</body>
+</html>

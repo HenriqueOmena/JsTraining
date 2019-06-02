@@ -1,24 +1,39 @@
-
-function setup() {
-    createCanvas(600, 400);
-    background(0);
-    let button = createButton('Click me');
-    let changeBackground = () => background(random(255))
-
-    button.mousePressed(changeBackground)
-
+function setup()  {
+   noCanvas();
+   //console.log(this);
+   const counter1 = new Counter(100, 500);
+   counter1.start();
+   const counter2 = new Counter(300, 1000);
+   counter2.start();
+   const counter3 = new Counter(400, 800);
+   counter3.start();
 }
 
+function draw()  {
+    //counter1.countIt();
+}
+
+
 class Counter {
-    constructor() {
-        this.count = 0;
+    constructor(start, wait) {
+        this.count = start;
+        this.wait = wait;
         this.p = createP('');
     }
-
-    countIt(){
-        this.count++;
-        this.p.html(this.count)   ;
+    start (){
+        setInterval(() => {    // if put  a normal function de this will refers to Window GLOBAL THIS
+            console.log(this);
+            this.countIt();
+        }, this.wait);
     }
+
+    countIt() {
+        this.count++;
+        this.p.html(this.count)  ;
+    }
+
+
+
 }
 
 

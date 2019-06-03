@@ -21,10 +21,8 @@ class Counter {
         this.p = createP('');
     }
     start (){
-        setInterval(() => {    // if put  a normal function de this will refers to Window GLOBAL THIS
-            console.log(this);
-            this.countIt();
-        }, this.wait);
+        // if put a normal function de this will refers to Window GLOBAL THIS
+        setInterval(() => this.countIt(), this.wait);
     }
 
     countIt() {

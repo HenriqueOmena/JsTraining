@@ -36,6 +36,20 @@
 
     const people = ["Beck, Glenn", "Becker, Carl", "Beckett, Samuel", "Beddoes, Mick", "Beecher, Henry", "Beethoven, Ludwig", "Begin, Menachem", "Belloc, Hilaire", "Bellow, Saul", "Benchley, Robert", "Benenson, Peter", "Ben-Gurion, David", "Benjamin, Walter", "Benn, Tony", "Bennington, Chester", "Benson, Leana", "Bent, Silas", "Bentsen, Lloyd", "Berger, Ric", "Bergman, Ingmar", "Berio, Luciano", "Berle, Milton", "Berlin, Irving", "Berne, Eric", "Bernhard, Sandra", "Berra, Yogi", "Berry, Halle", "Berry, Wendell", "Bethea, Erin", "Bevan, Aneurin", "Bevel, Ken", "Biden, Joseph", "Bierce, Ambrose", "Biko, Steve", "Billings, Josh", "Biondo, Frank", "Birrell, Augustine", "Black, Elk", "Blair, Robert", "Blair, Tony", "Blake, William"];
 
+
+    //Need help :S
+    let addObject = inventors.map(function (elm, index) {
+        const yearlived = elm.passed - elm.year;
+        let config = {"YearsLived": yearlived}
+        //console.log(config);
+        console.log(...config)
+
+    })
+
+
+    //console.log(addObject);
+
+
     let convertInventors = JSON.stringify(inventors, null, ' ')
     let invent = document.getElementById('inventors').innerHTML = convertInventors
     //console.log(invent);
@@ -56,7 +70,6 @@
 
 
 
-
     // Array.prototype.map()
     // 2. Give us an array of the inventors' first and last names
     /* let fullName = inventors.map(element => `${element.first} ${element.last}`);
@@ -72,15 +85,20 @@
 
     // Array.prototype.reduce()
     // 4. How many years did all the inventors live?
-    const yearsAlive = inventors.reduce(function(total, inventor) {
-        console.log(total)
-        console.log(inventor.passed - inventor.year)
-        return total + (inventor.passed -  inventor.year)
-    }, 0);
-
-    console.log(yearsAlive);
+            // const yearsAlive = inventors.reduce((total, inventor) => total + (inventor.passed - inventor.year), 0);
+            // console.log(yearsAlive);
 
     // 5. Sort the inventors by years lived
+                // const oldeguy = inventors.sort(function(a, b) {
+                //     const first = a.passed - a.year;
+                //     const next = b.passed - b.year;
+
+                //     return (first > next ? -1 : 1);
+
+
+                // })
+                // console.table(oldeguy);
+
 
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris

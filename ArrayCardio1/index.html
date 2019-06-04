@@ -38,16 +38,14 @@
 
 
     //Need help :S
-    let addObject = inventors.map(function (elm, index) {
-        const yearlived = elm.passed - elm.year;
-        let config = {"YearsLived": yearlived}
-        //console.log(config);
-        console.log(...config)
-
+    let addObject = inventors.map((elm, index) => {
+        let yearlived = elm.passed - elm.year;
+        //elm.yearsAlive = yearlived;
+        console.log(elm.yearsAlive);
     })
 
 
-    //console.log(addObject);
+    console.log(addObject);
 
 
     let convertInventors = JSON.stringify(inventors, null, ' ')
@@ -103,14 +101,37 @@
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
 
+        // let links1 = document.querySelectorAll('.mw-category a') // retorna um nodlist
+        // let links2 = [...document.querySelectorAll('.mw-category a')] // espalha cada elemento tranformando em array, igual o Array.From
+        // let links = Array.from(document.querySelectorAll('.mw-category a')) //convert Node list para array
+
+        // let linkText = links.map(link => link.textContent) //remove apenas o texto de cada link
+        // .filter(streetName => streetName.includes('de')) //filtra os elemento que contenha o de
 
     // 7. sort Exercise
     // Sort the people alphabetically by last name
+                const getlastName = people.sort((last, next)=>{
+                    const [aLast, aFirst] = last.split(', ')
+                    const [bLast, bFirst] = next.split(', ')
 
+                    return aLast > bFirst ? -1 : 1;
+                })
+                //console.log(getlastName);
     // 8. Reduce Exercise
     // Sum up the instances of each of these
     const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
 
+    const vehicles = data.reduce((obj, item)=>{
+        if(!obj[item]) {
+            obj[item] = 0;
+        }
+        obj[item]++
+        return obj
+    }, {
+
+    })
+
+    //console.log(vehicles);
   </script>
 </body>
 </html>

@@ -1,7 +1,30 @@
+const minhaPromise = () => new Promise((resolve, reject) => {
+    setTimeout(() => {
+        resolve('OK')
+    }, 2000);
+});
+
+//Uma forma sem es6
+minhaPromise()
+.then(response => {
+    console.log(response);
+})
+.catch( err => {
+    console.log(err);
+})
+
+// Com es6/es8 a mesma coisa
+ async function executaPromise(){ ///async vira promisse
+     const response = await minhaPromise()
+     console.log(response);
+ }
+
+
+
 //import {soma} from './funcoes';
-import * as wtf from './funcoes';
-console.log(wtf);
-console.log(wtf.soma(1,2));
+// import * as wtf from '../funcoes';
+// console.log(wtf);
+// console.log(wtf.soma(1,2));
 /* class List {
     constructor() {
         this.data =  [];

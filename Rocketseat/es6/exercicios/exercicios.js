@@ -1,3 +1,25 @@
+//==================EXERCICIO 7==================
+/* const nome = 'Diego'
+const idade = 23
+const usuario = { nome: nome, idade: idade, cidade: 'Rio   do   Sul', }
+
+const user = {
+    nome,
+    idade,
+    cidadde: "Rio do sul"
+}
+console.log(user); */
+
+
+//==================EXERCICIO 6==================
+
+//Converta   o   seguinte   trecho   de   código   utilizando   Template   Literals:
+const usuario = 'Diego';
+const idade = 23;
+console.log( 'O   usuário   ' + usuario + '   possui   ' + idade + '   anos' );
+console.log(`O usuario ${usuario} possui ${idade} anos`)
+
+
 //==================EXERCICIO 5==================
 // 5.1   Rest A   partir   do   array:  const   arr   =   [1,   2,   3,   4,   5,   6] ,   defina   uma   variável  x   que   recebe   a   primeira posição   do   vetor   e   outra   variável  y  que   recebe   todo   restante   dos   dados.
 
@@ -17,12 +39,12 @@ console.log(summAll(5, 6, 8)); */
 
 //A   partir   do   objeto   e   utilizando   o   operador   spread:
 
-const usuario = { nome: 'Diego', idade: 23, endereco: { cidade: 'Rio   do   Sul', uf: 'SC', pais: 'Brasil', } };
+/* const usuario = { nome: 'Diego', idade: 23, endereco: { cidade: 'Rio   do   Sul', uf: 'SC', pais: 'Brasil', } };
 
 const usuario2 = {...usuario, nome: "Gabriel"}
 const usuario3 = {...usuario, endereco: {...usuario.endereco, cidade:"Lonttras"}}
 
-console.log(usuario3);
+console.log(usuario3); */
 //==================EXERCICIO 4==================
 
 //4.1   Desestruturação   simples

@@ -1,4 +1,8 @@
-class List {
+//import {soma} from './funcoes';
+import * as wtf from './funcoes';
+console.log(wtf);
+console.log(wtf.soma(1,2));
+/* class List {
     constructor() {
         this.data =  [];
     }
@@ -25,5 +29,5 @@ const MinhaLista = new TodoList();
 document.getElementById('novotodo').onclick = function () {
     MinhaLista.add("Novo ToDo")
     MinhaLista.showUser();
-}
+} */
 

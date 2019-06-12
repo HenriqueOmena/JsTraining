@@ -1,4 +1,20 @@
-const minhaPromise = () => new Promise((resolve, reject) => {
+import axios from 'axios'
+
+class Api {
+    static async getUserInfo(username) {
+        try{
+            const response = await axios.get('https://api.github.com/users/'+username)
+            console.log(response);
+        } catch(err){
+            console.warn('Error na API');
+        }
+    }
+}
+
+Api.getUserInfo('henriqueomena')
+
+
+/* const minhaPromise = () => new Promise((resolve, reject) => {
     setTimeout(() => {
         resolve('OK')
     }, 2000);
@@ -18,7 +34,7 @@ minhaPromise()
      const response = await minhaPromise()
      console.log(response);
  }
-
+ */
 
 
 //import {soma} from './funcoes';

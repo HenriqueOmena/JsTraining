@@ -1,7 +1,10 @@
+import api from './api';
+
 class App {
     constructor() {
         this.repositories = [];
         this.formEl = document.getElementById('repo-form');
+        this.inputEl = document.querySelector('input[name=repository')
         this.listEl = document.getElementById('repo-list')
         this.registerHandlers();
     }
@@ -9,14 +12,21 @@ class App {
     registerHandlers() {
         this.formEl.onsubmit = event => this.addRepitory(event)
     }
-    addRepitory(event) {
+    async addRepitory(event) {
         event.preventDefault();
+        const repoInput = this.inputEl.value;
+        if (repoInput.length === 0)
+        return
 
+        const response = await api.get(`/users/${repoInput}`)
+
+        const { name, description, html_url,  avatar_url, login  } = response.data
+        console.log(response);
         this.repositories.push({
-            name: "Henrique Omena",
-            description: "Working hard!",
-            avatar_url: "https://avatars3.githubusercontent.com/u/35804326?s=460&v=4",
-            html_url: "https://api.github.com/users/henriqueomena"
+            name,
+            description: login,
+            avatar_url,
+            html_url,
         })
 
         this.render()

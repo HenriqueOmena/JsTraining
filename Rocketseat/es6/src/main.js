@@ -47,6 +47,7 @@ class App {
 
             let linkEl = document.createElement('a');
             linkEl.setAttribute('target', 'blank');
+            linkEl.setAttribute('href', repo.html_url);
             linkEl.appendChild(document.createTextNode('Acessar'))
 
             let listItemEl = document.createElement('li');

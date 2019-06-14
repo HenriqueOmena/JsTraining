@@ -12,24 +12,57 @@ class App {
     registerHandlers() {
         this.formEl.onsubmit = event => this.addRepitory(event)
     }
+
+    setLoading(loading = true) {
+        if (loading == true) {
+            let loadingEl = document.createElement('span');
+            loadingEl.appendChild((document.createTextNode('Carregando')));
+            loadingEl.setAttribute('id', 'loading');
+
+            this.formEl.appendChild((loadingEl));
+        }else {
+            document.getElementById('loading').remove();
+        }
+    }
+
+    errorMsg(mensagem){
+        let errorEl = document.getElementById('errorMsg');
+        errorEl.innerHTML = ''
+        errorEl.appendChild(document.createTextNode(mensagem))
+        setInterval(() => {
+            errorEl.innerHTML = ''
+        }, 2000);
+    }
+
     async addRepitory(event) {
         event.preventDefault();
         const repoInput = this.inputEl.value;
         if (repoInput.length === 0)
         return
 
-        const response = await api.get(`/users/${repoInput}`)
+        this.setLoading();
+        try {
+            const response = await api.get(`/users/${repoInput}`)
 
-        const { name, description, html_url,  avatar_url, login  } = response.data
-        console.log(response);
-        this.repositories.push({
-            name,
-            description: login,
-            avatar_url,
-            html_url,
-        })
+            const { name, description, html_url,  avatar_url, login  } = response.data
+            console.log(response);
+            this.repositories.push({
+                name,
+                description: login,
+                avatar_url,
+                html_url,
+            })
 
-        this.render()
+            this.inputEl.value = '';
+
+            this.render()
+        } catch(err) {
+            this.errorMsg('Utilizador nao existe, tente outro nome.');
+            this.inputEl.value = '';
+            this.inputEl.focus();
+        }
+
+        this.setLoading(false);
         console.log(this.repositories);
     }
 

@@ -1,13 +1,3 @@
-function imgCreate(src, alt, title, width, height = 32) {
-    const img = document.createElement('img');
-    img.src = src;
-    if ( alt != null ) img.alt = alt;
-    if ( title != null ) img.title = title;
-    if ( width != null ) img.width = width;
-    if ( height != null ) img.height = height;
-    return img;
-}
-
 function createCardBs(srcImg, title) {
 
     return `
@@ -30,8 +20,7 @@ const allCountries = fetch(apiContries)
 .then( json => {
     return json.map( data => {
         const { name, capital, alpha3Code, flag, population} = data
-        //const img = imgCreate(flag)
-        const cardHtml = createCardBs(flag, alpha3Code)
+        const cardHtml = createCardBs(flag, name.substring(0,15))
         const p = document.createElement('li')
 
         p.setAttribute('style', 'border: solid 1px red; float:left; list-style-type:none;')

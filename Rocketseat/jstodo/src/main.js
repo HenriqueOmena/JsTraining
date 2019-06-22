@@ -3,15 +3,9 @@ const inputEl = document.querySelector('#app input');
 const btnEl = document.querySelector('#app button');
 const infoEl = document.querySelector('#app div.info')
 
-const todos = [
-    'Fazer Café',
-    'Estudar JavaScript',
-    'Acessar comunidade de Devs'
-];
+const todos =  JSON.parse(localStorage.getItem('list_todos')) || [];
 
 inputEl.addEventListener('keyup', event => event.keyCode === 13 ? btnEl.click() : '')
-
-
 
 const renderTodos = () => {
         listEl.innerHTML = '';
@@ -27,10 +21,10 @@ const renderTodos = () => {
             const pos = todos.indexOf(todo)
 
             //linkEl.setAttribute('data-position', pos)
-            linkEl.setAttribute('onclick', 'deleteTodo('+pos+')') //not working, why ?! :S
-            const lintText = document.createTextNode('Excluir')
+            linkEl.setAttribute('onclick', 'deleteTodo('+pos+')'); //not working, why ?! :S
+            const linkText = document.createTextNode('Excluir')
 
-            linkEl.appendChild(lintText)
+            linkEl.appendChild(linkText)
 
             todoEl.appendChild(todoText);
             todoEl.appendChild(linkEl);
@@ -38,6 +32,7 @@ const renderTodos = () => {
             listEl.appendChild(todoEl);
         }
 }
+
 
 renderTodos();
 
@@ -57,12 +52,18 @@ const addTodo = () => {
 
     inputEl.value = '';
     renderTodos();
+    saveToStorage()
 }
 
 btnEl.onclick = addTodo;
 
-
 const deleteTodo = pos => {
     todos.splice(pos, 1)
     renderTodos();
+    saveToStorage();
+}
+
+
+const saveToStorage = () => {
+    localStorage.setItem('list_todos', JSON.stringify(todos))
 }

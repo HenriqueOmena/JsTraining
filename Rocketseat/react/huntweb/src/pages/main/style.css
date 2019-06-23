@@ -1,0 +1,37 @@
+.product-list {
+    max-width: 700px;
+    margin: 10px auto;
+    padding: 0 20px;
+}
+
+.product-list article {
+    background: white;
+    border: 1px solid grey;
+    padding: 20px;
+    margin: 0px 0px 20px 0px;
+}
+
+.product-list article p{
+    margin: 10px 0px;
+    color: grey;
+}
+
+.product-list article a {
+    height: 45px;
+    border-radius: 5px;
+    border: solid 2px blueviolet;
+    background: none;
+    color:  blueviolet;
+    font-size: 16px;
+    padding: 2px 10px;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.2s;
+}
+
+.product-list article a:hover {
+    background: blue;
+    color: white
+}

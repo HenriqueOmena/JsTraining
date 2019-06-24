@@ -35,3 +35,24 @@
     background: blue;
     color: white
 }
+
+.product-list .actions {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.product-list .actions button {
+    padding: 10px;
+    border-radius: 5px;
+    border: 0;
+    background: blueviolet;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.product-list .actions button:hover {
+    cursor: pointer;
+    opacity: 0.7;
+}

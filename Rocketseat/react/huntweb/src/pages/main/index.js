@@ -6,7 +6,8 @@ import "./style.css";
 export default class Main extends Component {
     state = {
         products: [],
-
+        productInfo: [],
+        page: 1,
     }
 
     componentDidMount() {
@@ -16,8 +17,18 @@ export default class Main extends Component {
     carregarProdutos = async () => {
         const response = await api.get('/products')
 
-        console.log(response.data.docs);
-        this.setState({products: response.data.docs})
+        const { docs, ...productInfo } = response.data;
+
+        this.setState({ products: docs, productInfo })
+
+
+        console.log(response);
+    }
+
+    prevPage = () => {}
+
+    nextPage = () => {
+
     }
 
     render() {
@@ -29,11 +40,13 @@ export default class Main extends Component {
                         <strong>{produto.title}</strong>
                         <p>{produto.description}</p>
                         <a href="#">Acessar</a>
-
                     </article>
                 ))}
+                <div className="actions">
+                    <button onClick={this.prevPage}>Anterios</button>
+                    <button onClick={this.nextPage}>Próxima</button>
+                </div>
             </div>
-
         );
     }
 }

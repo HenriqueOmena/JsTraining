@@ -6,7 +6,7 @@ import "./style.css";
 export default class Main extends Component {
     state = {
         products: [],
-        productInfo: [],
+        pagination: [],
         page: 1,
     }
 
@@ -14,20 +14,35 @@ export default class Main extends Component {
         this.carregarProdutos();
     }
 
-    carregarProdutos = async () => {
-        const response = await api.get('/products')
+    carregarProdutos = async (page = 1) => {
+        const response = await api.get(`/products?page=${page}`)
 
-        const { docs, ...productInfo } = response.data;
+        const { docs, ...pagination } = response.data;
 
-        this.setState({ products: docs, productInfo })
+        this.setState({ products: docs, pagination, page })
 
-
-        console.log(response);
+        console.log(page);
     }
 
-    prevPage = () => {}
+    prevPage = () => {
+        const { page, pagination } = this.state;
+
+        if (page === 1) return;
+
+        const pageNumber = page -1;
+
+        this.carregarProdutos(pageNumber-1)
+    }
 
     nextPage = () => {
+        const { page, pagination } = this.state;
+
+        if (page === pagination.pages) return;
+
+        const pageNumber = page + 1;
+
+        this.carregarProdutos(pageNumber);
+
 
     }
 

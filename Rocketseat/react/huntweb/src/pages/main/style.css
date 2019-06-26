@@ -52,6 +52,11 @@
     font-weight: bold;
 }
 
+.product-list .actions button[disabled] {
+    opacity: 0.5;
+    cursor: default;
+}
+
 .product-list .actions button:hover {
     cursor: pointer;
     opacity: 0.7;

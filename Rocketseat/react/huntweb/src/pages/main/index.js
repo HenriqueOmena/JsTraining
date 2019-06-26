@@ -29,9 +29,9 @@ export default class Main extends Component {
 
         if (page === 1) return;
 
-        const pageNumber = page -1;
+        const pageNumber = page - 1;
 
-        this.carregarProdutos(pageNumber-1)
+        this.carregarProdutos(pageNumber)
     }
 
     nextPage = () => {
@@ -58,8 +58,8 @@ export default class Main extends Component {
                     </article>
                 ))}
                 <div className="actions">
-                    <button onClick={this.prevPage}>Anterios</button>
-                    <button onClick={this.nextPage}>Próxima</button>
+                    <button disabled={ this.state.page === 1 } onClick={this.prevPage}>Anterios</button>
+                    <button disabled={ this.state.page === this.state.pagination.pages } onClick={this.nextPage}>Próxima</button>
                 </div>
             </div>
         );

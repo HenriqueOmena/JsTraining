@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import api from "../../services/api";
+import { Link } from 'react-router-dom';
 
 import "./style.css";
 
@@ -43,7 +44,6 @@ export default class Main extends Component {
 
         this.carregarProdutos(pageNumber);
 
-
     }
 
     render() {
@@ -54,7 +54,7 @@ export default class Main extends Component {
                     <article key={produto._id}>
                         <strong>{produto.title}</strong>
                         <p>{produto.description}</p>
-                        <a href="#">Acessar</a>
+                        <Link to={`/produto/${produto._id}`} href="#">Acessar</Link>
                     </article>
                 ))}
                 <div className="actions">
